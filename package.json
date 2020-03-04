@@ -1,0 +1,30 @@
+{
+  "name": "codesnippets",
+  "version": "1.0.0",
+  "description": "iOS 代码规范、属性、方法、GCD、线程等代码块和控制器、单例、Model 类模版",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/FantasticLBP/codesnippets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FantasticLBP/codesnippets/issues"
+  },
+  "homepage": "https://github.com/FantasticLBP/codesnippets#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "husky": "^4.2.3"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}

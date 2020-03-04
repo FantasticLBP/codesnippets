@@ -44,7 +44,7 @@ function uploadLocalCodeSnippetsAndFileTemplates {
     
     # 远端强制提交
     printStep "git push -f origin master"
-    git push -f origin master
+    git push origin master
 }
 
 uploadLocalCodeSnippetsAndFileTemplates

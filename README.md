@@ -3,6 +3,8 @@
     软件的生命周期贯穿产品的开发，测试，生产，用户使用，版本升级和后期维护等过程，只有易读，易维护的软件代码才具有生命力。
 
 
+
+
 ## 一些原则
 
 1. 长的，描述性的方法和变量命名是好的。不要使用简写，除非是一些大家都知道的场景比如 VIP。不要使用 bgView，推荐使用 backgroundView
@@ -35,10 +37,14 @@
 ```
 
 
+
+
 ## 变量
 
 1. 一个变量最好只有一个作用，切勿为了节省代码行数，觉得一个变量可以做多个用途。（单一原则）
 2. 方法内部如果有局部变量，那么局部变量应该靠近在使用的地方，而不是全部在顶部声明全部的局部变量。
+
+
 
 
 ## 运算符
@@ -46,6 +52,8 @@
 1. 1元运算符和变量之间不需要空格。例如：++n
 2. 2元运算符与变量之间需要空格隔开。例如： containerWidth = 0.3 * Screen_Width
 3. 当有多个运算符的时候需要使用括号来明确正确的顺序，可读性较好。例如： 2 << (1 + 2 * 3 - 4)
+
+
 
 
 ## 条件表达式
@@ -112,6 +120,8 @@ switch (menuType) {
 ```
 
 
+
+
 ## 类名
 
 1. 大写驼峰式命名。每个单词首字母大写。比如「申请记录控制器」ApplyRecordsViewController
@@ -126,9 +136,13 @@ switch (menuType) {
     - Service 类：Service
 
 
+
+
 ## 类的注释
 
 有时候我们需要为我们创建的类设置一些注释。我们可以在类的下面添加。
+
+
 
 
 ## 枚举
@@ -144,6 +158,8 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 ```
 
 
+
+
 ## 宏
 
 1. 全部大写，单词与单词之间用 `_` 连接。
@@ -153,6 +169,8 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 #define HOME_PAGE_DID_SCROLL @"com.xq.home.page.tableview.did.scroll"
 #define KHomePageDidScroll @"com.xq.home.page.tableview.did.scroll"
 ```
+
+
 
 
 ## 属性
@@ -166,6 +184,8 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 @property (nonatomic, weak) id<#delegate#> delegate;
 @property (nonatomic, copy) <#returnType#> (^<#Block#>)(<#parType#>);
 ```
+
+
 
 
 ## 单例
@@ -217,9 +237,12 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 ```
 
 
+
+
 ## 私有变量
 
  推荐以 `_` 开头，写在 .m 文件中。例如 NSString * _somePrivateVariable
+
 
 
 
@@ -234,6 +257,8 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
 ```
+
+
 
 
 ## 方法
@@ -362,6 +387,8 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 ```
 
 
+
+
 ## 图片资源
 
 1. 单个文件的命名
@@ -372,6 +399,8 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
    最好也参考 App 按照功能模块建立对应的实体文件夹目录，最后到对应的目录下添加相应的资源文件。
 
 
+
+
 ## 注释
 
 1. 对于类的注释写在当前类文件的顶部
@@ -379,6 +408,8 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 3. 对于 .h 文件中方法的注释，一律按快捷键 `command+option+/`。三个快捷键解决。按需在旁边对方法进行说明解释、返回值、参数的说明和解释
 4. 对于 .m 文件中的方法的注释，在方法的旁边添加 `//`。
 5. 注释符和注释内容需要间隔一个空格。 例如： // fetch goods list
+
+
 
 
 ## 版本规范
@@ -392,6 +423,8 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 | a.b.**C** | 属于补丁更新 | 1.0.2 -> 1.0.3 |
 
 
+
+
 ## 改进
 
 我们知道了平时在使用 Xcode 开发的过程中使用的系统提供的代码块所在的地址和新建控制器、模型、view等的文件模版的存放文件夹地址后，我们就可以设想下我们是否可以定制自己团队风格的控制器模版、是否可以打造和维护自己团队的高频使用的代码块？
@@ -402,6 +435,8 @@ Xcode 代码块的存放地址：`~/Library/Developer/Xcode/UserData/CodeSnippet
 Xcode 文件模版的存放地址：/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/
 
 
+
+
 ## 意义
 
 1. 为了个人或者团队开发者的代码更加规范。Property的书写的时候的空格、线程修饰词、内存修饰词的先后顺序
@@ -409,9 +444,13 @@ Xcode 文件模版的存放地址：/Applications/Xcode.app/Contents/Developer/P
 3. 通过一些代码块提高代码规范、避免一些bug。比如曾看到过 block 属性用 strong 修饰的代码，造成内存泄漏。举个例子你在 Xcode 中输入 **Property_delegate** 就会出来 `@property (nonatomic, weak) id<<#delegate#>> delegate;`，你输入 **Property_block** 就会出来 `@property (nonatomic, copy) <#returnType#> (^<#Block#>)(<#parType#>);`
 
 
+
+
 ## 代码块的改造
 
 我们可以将属性、控制器生命周期方法、单例构造一个对象的方法、代理方法、block、GCD、UITableView 懒加载、UITableViewCell 注册、UITableView 代理方法的实现、UICollectionVIew 懒加载、UICollectionVIewCell 注册、UICollectionView 的代理方法实现等等组织为 codesnippets
+
+
 
 
 ### 思考
@@ -459,6 +498,8 @@ Xcode 文件模版的存放地址：/Applications/Xcode.app/Contents/Developer/P
   4. 将当前的所有文件提交到 Git 仓库
 
 
+
+
 ## 文件模版的改造
 
 我们观察系统文件模版的特点，和在 Xcode 新建文件模版对应。
@@ -504,6 +545,8 @@ Xcode 文件模版的存放地址：/Applications/Xcode.app/Contents/Developer/P
   3. 进入存放 file template 的文件夹将内容复制到系统存放 file template 的地方
 
 
+
+
 ## 内容及其如何使用
 
 1. Property 属性。敲 **Property_** 自动联想，光标移动选中后敲回车自动补全
@@ -520,6 +563,8 @@ Xcode 文件模版的存放地址：/Applications/Xcode.app/Contents/Developer/P
 12. 一些常用的代码块。敲 **Thread_** 等自动联想，选中后敲回车自动补全。
 
 
+
+
 ## 使用
 
 ```shell
@@ -529,10 +574,23 @@ chmod +x ./uploadMySnippets.sh // 为脚本设置可执行权限
 ./uploadMySnippets.sh //将本地的代码块和文件模版同步到云端
 ```
 
+
+
+
 ## PS
 
 **不断完善中。大家有好用或者不错的代码块或者文件模版希望参与到这个项目中来，为我们开发效率的提升添砖加瓦、贡献力量**
 
-目前新建了大概58个代码段和6个类文件模版（UIViewController控制器带有方法组、模型、线程安全的单例模版、带有布局方法的UIView模版、UITableViewCell、UICollectionViewCell模版）
 
-shell 脚本基本有每个函数和关键步骤的代码注释，想学习 shell 的人可以看看代码。[代码传送门](https://github.com/FantasticLBP/codesnippets)
+
+
+## 反馈
+
+定期更新博文。如果在查看文章的时候发现了问题可以提出 issue。（95年小双鱼, 技术专家进阶中，有技术问题或者想聊聊程序员的事情可以通过微博联系）[微博](http://weibo.com/u/3194053975)
+
+
+
+
+## 交流
+
+如果你也是大前端路上的一名修行者,可以加我 Wechat：704568245，拉你入群一起在「大前端自习室」学习交流。
