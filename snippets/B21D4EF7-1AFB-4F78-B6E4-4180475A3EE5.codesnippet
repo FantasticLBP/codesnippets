@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>Method_NSDataAES</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#import &lt;CommonCrypto/CommonCryptor.h&gt;
+
+/// 对 NSData 增加 AES 加解密的能力。CBC加密模式，安全性更高
+@implementation NSData (PCTAES)
+
+/**
+对 NSData 数据进行 AES 加密
+
+@param key 16位参数
+@param Iv 16位参数
+@return 加密结果
+*/
+- (NSData *)pct_AES128EncryptWithKey:(NSString *)key Iv:(NSString *)Iv {
+    char keyPtr[kCCKeySizeAES128 + 1];
+    bzero(keyPtr, sizeof(keyPtr));
+    [key getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
+
+    char ivPtr[kCCKeySizeAES128 + 1];
+    memset(ivPtr, 0, sizeof(ivPtr));
+    [Iv getCString:ivPtr maxLength:sizeof(ivPtr) encoding:NSUTF8StringEncoding];
+
+    NSUInteger dataLength = [self length];
+    size_t bufferSize = dataLength + kCCBlockSizeAES128;
+    void *buffer = malloc(bufferSize);
+    size_t numBytesEncrypted = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(kCCEncrypt,
+                                          kCCAlgorithmAES128,
+                                          kCCOptionPKCS7Padding,
+                                          keyPtr,
+                                          kCCBlockSizeAES128,
+                                          ivPtr,
+                                          [self bytes],
+                                          dataLength,
+                                          buffer,
+                                          bufferSize,
+                                          &amp;numBytesEncrypted);
+    if (cryptStatus == kCCSuccess) {
+        return [NSData dataWithBytesNoCopy:buffer length:numBytesEncrypted];
+    }
+    free(buffer);
+    return nil;
+}
+
+/**
+对 NSData 数据进行 AES 解密
+
+@param key 16位参数
+@param Iv 16为位参数
+@return 解密结果
+*/
+- (NSData *)pct_AES128DecryptWithKey:(NSString *)key gIv:(NSString *)Iv {
+    char keyPtr[kCCKeySizeAES128 + 1];
+    bzero(keyPtr, sizeof(keyPtr));
+    [key getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
+
+    char ivPtr[kCCKeySizeAES128 + 1];
+    memset(ivPtr, 0, sizeof(ivPtr));
+    [Iv getCString:ivPtr maxLength:sizeof(ivPtr) encoding:NSUTF8StringEncoding];
+
+    NSUInteger dataLength = [self length];
+    size_t bufferSize = dataLength + kCCBlockSizeAES128;
+    void *buffer = malloc(bufferSize);
+    size_t numBytesDecrypted = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(kCCDecrypt,
+                                          kCCAlgorithmAES128,
+                                          kCCOptionPKCS7Padding,
+                                          keyPtr,
+                                          kCCBlockSizeAES128,
+                                          ivPtr,
+                                          [self bytes],
+                                          dataLength,
+                                          buffer,
+                                          bufferSize,
+                                          &amp;numBytesDecrypted);
+    if (cryptStatus == kCCSuccess) {
+        return [NSData dataWithBytesNoCopy:buffer length:numBytesDecrypted];
+    }
+    free(buffer);
+    return nil;
+}
+
+@end</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>B21D4EF7-1AFB-4F78-B6E4-4180475A3EE5</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>给 NSData 增加 AES 加解密功能</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>AES with NSData </string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

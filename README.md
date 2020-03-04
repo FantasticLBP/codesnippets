@@ -432,7 +432,7 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 答案是可以的。
 
 Xcode 代码块的存放地址：`~/Library/Developer/Xcode/UserData/CodeSnippets`
-Xcode 文件模版的存放地址：/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/
+Xcode 文件模版的存放地址：`/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/`
 
 
 
@@ -475,6 +475,22 @@ Xcode 文件模版的存放地址：/Applications/Xcode.app/Contents/Developer/P
       
   }
   ```
+
+  比如快速获取当前时间的时间戳
+
+  <iframe height=500 width=500 src="https://github.com/FantasticLBP/knowledge-kit/raw/master/assets/2020-03-05-CodeSnippets_timestamp.gif">
+
+  
+
+  给一个模型类属性很多，又遵循 NSCoding 协议，很多人可能老老实实去写写 `initWithCoder`、 `encodeWithCoder`  2个方法内一个个属性写，这样其实很麻烦，如果宏写的好，其实很容易用宏实现，如下演示
+
+  <iframe height=500 width=500 src="https://github.com/FantasticLBP/knowledge-kit/raw/master/assets/2020-03-05-CodeSnippet_Encoder.gif">
+
+  
+
+  其实我这个 Repo 中代码块的威力远不止如此，具有 CodeSnippet 的解释、说明、类型都很方便，用过几次很快就熟悉怎么用了。
+
+  
 
   各种常见的 Mark：以 **Mark_关键词** 回车确认，自动补全。比如 Method_MethodsGroup 回车键自动补全成 如下格式
 
@@ -573,13 +589,6 @@ chmod +x ./uploadMySnippets.sh // 为脚本设置可执行权限
 ./syncSnippets.sh // 同步git云端代码块和文件模版到本地
 ./uploadMySnippets.sh //将本地的代码块和文件模版同步到云端
 ```
-
-
-
-
-## PS
-
-**不断完善中。大家有好用或者不错的代码块或者文件模版希望参与到这个项目中来，为我们开发效率的提升添砖加瓦、贡献力量**
 
 
 

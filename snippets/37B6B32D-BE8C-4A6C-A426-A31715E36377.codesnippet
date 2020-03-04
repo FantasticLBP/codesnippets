@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>Method_Encode</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#define PCT_DECODE(decoder, dataType, keyName)                                                    \
+    {                                                                                             \
+        _##keyName = [decoder decode##dataType##ForKey:NSStringFromSelector(@selector(keyName))]; \
+    };
+
+#define PCT_ENCODE(aCoder, dataType, key)                                             \
+    {                                                                                 \
+        [aCoder encode##dataType:_##key forKey:NSStringFromSelector(@selector(key))]; \
+    };</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>37B6B32D-BE8C-4A6C-A426-A31715E36377</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>给归档协议的方法增加宏，使用起来超方便</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>EncodeAndDecode</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

@@ -3,26 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>Method_mainQueue</string>
+	<string>Method_categoryProperty</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>dispatch_sync(dispatch_get_main_queue(), ^{
+	<string>- (NSString*)cmn_requestId
+{
+    return objc_getAssociatedObject(self, _cmd);
+}
 
-    });</string>
+- (void)setCmn_requestId:(NSString*)requestId
+{
+    objc_setAssociatedObject(self, @selector(cmn_requestId),requestId, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>E8E74582-3E40-43F4-82E4-273EBC57372F</string>
+	<string>52A5D59C-7D4E-4E93-A0BB-D826B89BDBE4</string>
 	<key>IDECodeSnippetLanguage</key>
-	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>主线程操作</string>
+	<string>给 Category 添加属性</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>mainThread</string>
+	<string>a function codesnippet that can add property to class category</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>
