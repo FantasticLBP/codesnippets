@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>Protocol</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>@class &lt;#Class#&gt;;
+@protocol &lt;#Delegate#&gt;&lt;NSObject&gt;
+
+@required
+- (void)bidInfoCell:(delegate *)bidInfoCell didClickWithCompanyModel:(CompanyModel *)companymodel;
+
+@end</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F856017E-E797-4E46-9B9D-BC6F2E454808</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>协议的声明</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Protocol desrlation</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

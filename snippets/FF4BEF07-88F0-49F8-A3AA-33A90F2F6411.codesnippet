@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>NavigationBar_init</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (SelfNavigationBar *)navigationBar
+{
+    if (!_navigationBar) {
+        _navigationBar = [[SelfNavigationBar alloc] initBarWithFrame:CGRectMake(0, 0, self.view.width, XQ_BAR_NAV_STATUS_HEIGHT)];
+        _navigationBar.backgroundColor = [UIColor clearColor];
+        [_navigationBar setLeftButtonWithImage:[UIImage imageNamed:@"LH_NavigationBar_BackIconBlack"] withControlState:UIControlStateNormal];
+        @weakify(self);
+        [_navigationBar setLeftButtonWithAction:^{
+            @strongify(self);
+            // ...左侧返回按钮事件
+            [self.navigationController popViewControllerAnimated:YES];
+        } withControlerEvent:UIControlEventTouchUpInside];
+        [_navigationBar setLeftButtonWithTitle:&lt;#buttonTitle#&gt; withControlState:UIControlStateNormal];
+        _navigationBar.leftButton.titleLabel.font = [UIFont boldSystemFontOfSize:17];
+        [_navigationBar setTitleBarLeftTextColor:[UIColor whiteColor] IconColor:nil];
+    }
+    return _navigationBar;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>FF4BEF07-88F0-49F8-A3AA-33A90F2F6411</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>NavigationBar quick init</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>NavigationBar初始化</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

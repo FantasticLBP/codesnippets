@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>Method_UITableviewDelegate</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    SDGCategoryModel *cateModel = [[SDGGoodsCategoryServices sharedInstance].categories[indexPath.section] children][indexPath.row];
+    if (cateModel.isSelect) {
+        CGSize size = [cateModel.name xq_sizeWithMaxWith:k_firstCategoryTableViewW - 12 textfont:[UIFont systemFontOfSize:12 weight:UIFontWeightMedium]];
+        return size.height + 29.f;
+    } else {
+        CGSize size = [cateModel.name xq_sizeWithMaxWith:k_firstCategoryTableViewW textfont:[UIFont systemFontOfSize:12]];
+        return size.height + 29.f;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    SDGCategoryModel *cateModel = [SDGGoodsCategoryServices sharedInstance].categories[section];
+    if (cateModel.isSelect) {
+        CGSize size = [cateModel.name xq_sizeWithMaxWith:80 - 5.5 textfont:[UIFont systemFontOfSize:17 weight:UIFontWeightMedium]];
+        return size.height + 29.f;
+    } else {
+        CGSize size = [cateModel.name xq_sizeWithMaxWith:80 - 5.5 textfont:[UIFont systemFontOfSize:14]];
+        return size.height + 29.f;
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>420DCB87-CF51-4430-AF4D-FABDFCBC990A</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>UITableViewDelegate方法组</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>UITableViewDelegate</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

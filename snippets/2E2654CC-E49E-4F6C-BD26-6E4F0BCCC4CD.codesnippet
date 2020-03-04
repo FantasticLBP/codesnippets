@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>UICollectionView_init</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (UICollectionView *)collectioView
+{
+    if (!_collectioView) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.itemSize = CGSizeMake(&lt;#width#&gt;, &lt;#height#&gt;);
+        layout.minimumLineSpacing = &lt;#spacing#&gt;;
+        layout.minimumInteritemSpacing = &lt;#spacing#&gt;;
+        
+        _collectioView = [[UICollectionView alloc] initWithFrame:CGRectMake(&lt;#originX#&gt;, &lt;#origiY#&gt;, &lt;#width#&gt;, &lt;#height#&gt;) collectionViewLayout:layout];
+        _collectioView.delegate = self;
+        _collectioView.dataSource = self;
+        _collectioView.backgroundColor = [UIColor blackColor];
+        [_collectioView registerClass:[&lt;#CollectionViewCellClass#&gt; class] forCellWithReuseIdentifier:&lt;#KReuseCellIdentifier#&gt;];
+    }
+    return _collectioView;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>2E2654CC-E49E-4F6C-BD26-6E4F0BCCC4CD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>UICollectionView懒加载快速初始化</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>UICollectionView init</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

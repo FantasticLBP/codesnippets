@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>Method_UICollectionViewDataSource</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#pragma mark - UICollectionViewDataSource
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [SDGGoodsCategoryServices sharedInstance].goods.count;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    if (![SDGGoodsCategoryServices sharedInstance].goods.count) {
+        return CGSizeMake(0, 0);
+    }
+    return CGSizeMake(self.collectionView.width, self.footerHeight);
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if (![SDGGoodsCategoryServices sharedInstance].goods.count){
+        return nil;
+    }
+    if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kReloadFooterMoreCellIdentifier forIndexPath:indexPath];
+        [self.loadMoreView setFrame:CGRectMake(0, 0, self.collectionView.width, self.footerHeight)];
+        if ([SDGGoodsCategoryServices sharedInstance].hasMore) {
+            [self.loadMoreView changeLoadViewStatus:SDGLoadingStatus];
+        } else {
+            [self.loadMoreView changeLoadViewStatus:SDGLoadNoMoreStatus];
+        }
+        [view addSubview:self.loadMoreView];
+        
+        return view;
+    }
+    return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([SDGGoodsCategoryServices sharedInstance].isGoodsLine) {
+        return CGSizeMake(self.collectionView.width, 30 + 90 * (DEVICE_WIDTH / 375.0));
+    } else {
+        CGFloat sizeWidth = (int) (self.collectionView.width - space * 3) / 2;
+        CGFloat sizeHeight = (sizeWidth - 10) + (210 - 135);
+        return CGSizeMake(sizeWidth, sizeHeight);
+    }
+}
+
+//下面方法仅仅适用于ios8以上的方法
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[SDGGoodsCategoryServices sharedInstance] judgeNextPage:indexPath.row];
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>03B5A35E-EB35-4CA6-BE35-A6CDADBF3E6D</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>UICollectionViewDataSource方法组</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>UICollectionViewDataSource</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

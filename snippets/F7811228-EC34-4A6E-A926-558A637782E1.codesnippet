@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>UIButton_Init</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (UIButton *)button
+{
+    if (!_button) {
+        _button = [UIButton buttonWithType:UIButtonTypeCustom];
+        _button.frame = CGRectMake(&lt;#originX#&gt;, &lt;#originY#&gt;, &lt;#width#&gt;, &lt;#height#&gt;);
+        [_button setTitle:&lt;#title#&gt; forState:UIControlStateNormal];
+        [_button setTitleColor:&lt;#Color#&gt; forState:UIControlStateNormal];
+        [_button addTarget:self action:@selector(&lt;#metodName#&gt;) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _button;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F7811228-EC34-4A6E-A926-558A637782E1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>UIButton快速懒加载初始化</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>UIButtonInit</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
