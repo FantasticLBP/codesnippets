@@ -476,17 +476,12 @@ Xcode 文件模版的存放地址：`/Applications/Xcode.app/Contents/Developer/
   }
   ```
 
-  比如快速获取当前时间的时间戳
-
-  <iframe height=500 width=500 src="https://github.com/FantasticLBP/knowledge-kit/raw/master/assets/2020-03-05-CodeSnippets_timestamp.gif">
-
-  
-
   给一个模型类属性很多，又遵循 NSCoding 协议，很多人可能老老实实去写写 `initWithCoder`、 `encodeWithCoder`  2个方法内一个个属性写，这样其实很麻烦，如果宏写的好，其实很容易用宏实现，如下演示
 
-  <iframe height=500 width=500 src="https://github.com/FantasticLBP/knowledge-kit/raw/master/assets/2020-03-05-CodeSnippet_Encoder.gif">
+  ![演示](https://raw.githubusercontent.com/FantasticLBP/knowledge-kit/master/assets/2020-03-05-codeSnippets_Encoder.png)
 
   
+
 
   其实我这个 Repo 中代码块的威力远不止如此，具有 CodeSnippet 的解释、说明、类型都很方便，用过几次很快就熟悉怎么用了。
 
