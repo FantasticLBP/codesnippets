@@ -1,11 +1,16 @@
-> 最近重构项目组件，看到项目中存在一些命名和方法分块方面存在一些问题，结合平时经验和 [Apple官方代码规范](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html) 在此整理出 iOS 工程规范。提出第一个版本，如果后期觉得有不完善的地方，继续提出来不断完善，文档在此记录的目的就是为了大家的代码可读性较好，后来的人或者团队里面的其他人看到代码可以不会因为代码风格和可读性上面造成较大时间的开销。
-
-    软件的生命周期贯穿产品的开发，测试，生产，用户使用，版本升级和后期维护等过程，只有易读，易维护的软件代码才具有生命力。
+> 软件的生命周期贯穿产品的开发，测试，生产，用户使用，版本升级和后期维护等过程，只有易读，易维护的软件代码才具有生命力。
 
 
 
+## 一、思路
 
-## 一些原则
+最近重构项目组件，看到项目中存在一些命名和方法分块方面存在一些问题，结合平时经验和 [Apple官方代码规范](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html) 在此整理出 iOS 工程规范。提出第一个版本，如果后期觉得有不完善的地方，继续提出来不断完善，文档在此记录的目的就是为了大家的代码可读性较好，后来的人或者团队里面的其他人看到代码可以不会因为代码风格和可读性上面造成较大时间的开销。
+
+先梳理出规范，然后使用一些脚本的方式，提高大家使用的便捷性与效率，最后开发一些协作脚本。
+
+
+
+## 二、一些原则
 
 1. 长的，描述性的方法和变量命名是好的。不要使用简写，除非是一些大家都知道的场景比如 VIP。不要使用 bgView，推荐使用 backgroundView
 2. 见名知意。含义清楚，做好不加注释代码自我表述能力强。（前提是代码足够规范）
@@ -18,7 +23,7 @@
 ```Objective-c
 - (void)getGooodsList
 {
-    // ...
+    ...
 }
 
 - (void)doHomework
@@ -36,27 +41,18 @@
 }
 ```
 
-
-
-
-## 变量
+### 变量
 
 1. 一个变量最好只有一个作用，切勿为了节省代码行数，觉得一个变量可以做多个用途。（单一原则）
 2. 方法内部如果有局部变量，那么局部变量应该靠近在使用的地方，而不是全部在顶部声明全部的局部变量。
 
-
-
-
-## 运算符
+### 运算符
 
 1. 1元运算符和变量之间不需要空格。例如：++n
 2. 2元运算符与变量之间需要空格隔开。例如： containerWidth = 0.3 * Screen_Width
 3. 当有多个运算符的时候需要使用括号来明确正确的顺序，可读性较好。例如： 2 << (1 + 2 * 3 - 4)
 
-
-
-
-## 条件表达式
+### 条件表达式
 
 1. 当有条件过多、过长的时候需要换行，为了代码看起来整齐些
 ```
@@ -101,19 +97,19 @@ if (self.hungry) {
 ```
 switch (menuType) {  
   case menuTypeLeft: {
-    // ...  
+    ...  
     break; 
    }
   case menuTypeRight: {
-    // ...  
+    ...  
     break; 
   }
   case menuTypeTop: {
-    // ...  
+    ...  
     break; 
   }
   case menuTypeBottom: {
-    // ...  
+    ...  
     break; 
   }
 }
@@ -121,8 +117,7 @@ switch (menuType) {
 
 
 
-
-## 类名
+### 类名
 
 1. 大写驼峰式命名。每个单词首字母大写。比如「申请记录控制器」ApplyRecordsViewController
 2. 每个类型的命名以该类型结尾。
@@ -135,17 +130,11 @@ switch (menuType) {
     - 代理类：Delegate
     - Service 类：Service
 
-
-
-
-## 类的注释
+### 类的注释
 
 有时候我们需要为我们创建的类设置一些注释。我们可以在类的下面添加。
 
-
-
-
-## 枚举
+### 枚举
 
 枚举的命名和类的命名相近。
 ```
@@ -157,10 +146,7 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 };
 ```
 
-
-
-
-## 宏
+### 宏
 
 1. 全部大写，单词与单词之间用 `_` 连接。
 2. 以 `K`  开头。后面遵循大写驼峰命名。「不带参数」
@@ -170,10 +156,7 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 #define KHomePageDidScroll @"com.xq.home.page.tableview.did.scroll"
 ```
 
-
-
-
-## 属性
+### 属性
 
 书写规则，基本上就是 `@property 之后空一格，括号，里面的 线程修饰词、内存修饰词、读写修饰词，空一格 类 对象名称`
 根据不同的场景选择合适的修饰符。
@@ -185,10 +168,7 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 @property (nonatomic, copy) <#returnType#> (^<#Block#>)(<#parType#>);
 ```
 
-
-
-
-## 单例
+### 单例
 
 单例适合全局管理状态或者事件的场景。一旦创建，对象的指针保存在静态区，单例对象在堆内存中分配的内存空间只有程序销毁的时候才会释放。基于这种特点，那么我们类似 UIApplication 对象，需要全局访问唯一一个对象的情况才适合单例，或者访问频次较高的情况。我们的功能模块的生命周期肯定小于 App 的生命周期，如果多个单例对象的话，势必 App 的开销会很大，糟糕的情况系统会杀死 App。如果觉得非要用单例比较好，那么注意需要在合适的场合 tearDown 掉。
 
@@ -238,15 +218,13 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 
 
 
-
-## 私有变量
+### 私有变量
 
  推荐以 `_` 开头，写在 .m 文件中。例如 NSString * _somePrivateVariable
 
 
 
-
-## 代理方法
+###  代理方法
 
 1. 类的实例必须作为方法的参数之一。
 2. 对于一些连续的状态的，可以加一些 will（将要）、did（已经）
@@ -260,8 +238,7 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 
 
 
-
-## 方法
+### 方法
 
 1. 方法与方法之间间隔一行
 2. 大量的方法尽量要以组的形式放在一起，比如生命周期函数、公有方法、私有方法、setter && getter、代理方法..
@@ -388,8 +365,7 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 
 
 
-
-## 图片资源
+### 图片资源
 
 1. 单个文件的命名
     文件资源的命名也需要一定的规范，形式为：功能模块名_类别_功能_状态@nx.png
@@ -400,8 +376,7 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 
 
 
-
-## 注释
+### 注释
 
 1. 对于类的注释写在当前类文件的顶部
 2. 对于属性的注释需要写在属性后面的地方。 //**<userId*/
@@ -409,10 +384,7 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 4. 对于 .m 文件中的方法的注释，在方法的旁边添加 `//`。
 5. 注释符和注释内容需要间隔一个空格。 例如： // fetch goods list
 
-
-
-
-## 版本规范
+### 版本规范
 
 采用 A.B.C 三位数字命名，比如：1.0.2，当有更新的情况下按照下面的依据
 
@@ -422,22 +394,18 @@ typedef NS_ENUM(NSInteger, UIControlContentVerticalAlignment) {
 | a.**B**.c | 属于小部分内容的更新 | 1.0.2 -> 1.1.1 |
 | a.b.**C** | 属于补丁更新 | 1.0.2 -> 1.0.3 |
 
-
-
-
-## 改进
+### 改进
 
 我们知道了平时在使用 Xcode 开发的过程中使用的系统提供的代码块所在的地址和新建控制器、模型、view等的文件模版的存放文件夹地址后，我们就可以设想下我们是否可以定制自己团队风格的控制器模版、是否可以打造和维护自己团队的高频使用的代码块？
 
 答案是可以的。
 
 Xcode 代码块的存放地址：`~/Library/Developer/Xcode/UserData/CodeSnippets`
-Xcode 文件模版的存放地址：`/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/`
+Xcode 文件模版的存放地址：/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/File Templates/
 
 
 
-
-## 意义
+### 意义
 
 1. 为了个人或者团队开发者的代码更加规范。Property的书写的时候的空格、线程修饰词、内存修饰词的先后顺序
 2. 提供大量可用的代码块，提高开发效率。比如在 Xcode 里面敲 UITableView_init 便可以自动懒加载创建一个 UITabelView 对象，你只需要设置在指定的位置写相应的参数
@@ -445,12 +413,9 @@ Xcode 文件模版的存放地址：`/Applications/Xcode.app/Contents/Developer/
 
 
 
-
-## 代码块的改造
+## 三、 代码块的改造
 
 我们可以将属性、控制器生命周期方法、单例构造一个对象的方法、代理方法、block、GCD、UITableView 懒加载、UITableViewCell 注册、UITableView 代理方法的实现、UICollectionVIew 懒加载、UICollectionVIewCell 注册、UICollectionView 的代理方法实现等等组织为 codesnippets
-
-
 
 
 ### 思考
@@ -476,17 +441,6 @@ Xcode 文件模版的存放地址：`/Applications/Xcode.app/Contents/Developer/
   }
   ```
 
-  给一个模型类属性很多，又遵循 NSCoding 协议，很多人可能老老实实去写写 `initWithCoder`、 `encodeWithCoder`  2个方法内一个个属性写，这样其实很麻烦，如果宏写的好，其实很容易用宏实现，如下演示
-
-  ![演示](https://raw.githubusercontent.com/FantasticLBP/knowledge-kit/master/assets/2020-03-05-codeSnippets_Encoder.png)
-
-  
-
-
-  其实我这个 Repo 中代码块的威力远不止如此，具有 CodeSnippet 的解释、说明、类型都很方便，用过几次很快就熟悉怎么用了。
-
-  
-
   各种常见的 Mark：以 **Mark_关键词** 回车确认，自动补全。比如 Method_MethodsGroup 回车键自动补全成 如下格式
 
   ```objective-c
@@ -509,9 +463,7 @@ Xcode 文件模版的存放地址：`/Applications/Xcode.app/Contents/Developer/
   4. 将当前的所有文件提交到 Git 仓库
 
 
-
-
-## 文件模版的改造
+## 四、文件模版的改造
 
 我们观察系统文件模版的特点，和在 Xcode 新建文件模版对应。
 
@@ -558,43 +510,64 @@ Xcode 文件模版的存放地址：`/Applications/Xcode.app/Contents/Developer/
 
 
 
-## 内容及其如何使用
 
-1. Property 属性。敲 **Property_** 自动联想，光标移动选中后敲回车自动补全
-2. Mark 标识。 敲 **Mark_** 自动联想，会展示各种常用的 Mark，光标移动选中后敲回车自动补全
-3. Method 方法。敲 **Method_** 自动联想，会展示各种常用的 Method，光标移动选中后敲回车自动补全
-4. GCD。敲 **GCD_** 自动联想，会展示各种常用的 GCD，光标移动选中后敲回车自动补全
-5. 常用 UI 控件的懒加载。敲 **_init** 自动联想，展示常用的 UI 控件的懒加载，光标移动选中后敲回车自动补全
-6. Delegate。敲 **Delegate_** 自动联想，会展示各种常用的 Delegate，光标移动选中后敲回车自动补全
-7. Notification。敲 **NSNotification_** 自动联想，会展示各种常用的 NSNotification 的代码块，比如发送通知、添加观察者、移除观察者、观察者方法的实现等等，光标移动选中后敲回车自动补全
-8. Protocol。敲 **Protocol_** 自动联想，会展示各种常用的 Protocol 的代码块，光标移动选中后敲回车自动补全
-9. 内存修饰代码块
-10. 工程常用 TODO、FIXME、Mark。敲 **Mark_** 自动联想，会展示各种常用的 Mark 的代码块，光标移动选中后敲回车自动补全
-11. 内存修饰代码块。敲 **Memory_** 自动联想，会展示各种常用的内存修饰的代码块，光标移动选中后敲回车自动补全
-12. 一些常用的代码块。敲 **Thread_** 等自动联想，选中后敲回车自动补全。
+## 六、使用
 
+### 1. Xcode 中开发
 
+- Property 属性。敲 **Property_** 自动联想，光标移动选中后敲回车自动补全
 
+- Mark 标识。 敲 **Mark_** 自动联想，会展示各种常用的 Mark，光标移动选中后敲回车自动补全
 
-## 使用
+- Method 方法。敲 **Method_** 自动联想，会展示各种常用的 Method，光标移动选中后敲回车自动补全
+
+- GCD。敲 **GCD_** 自动联想，会展示各种常用的 GCD，光标移动选中后敲回车自动补全
+
+- 常用 UI 控件的懒加载。敲 **_init** 自动联想，展示常用的 UI 控件的懒加载，光标移动选中后敲回车自动补全
+
+- Delegate。敲 **Delegate_** 自动联想，会展示各种常用的 Delegate，光标移动选中后敲回车自动补全
+
+- Notification。敲 **NSNotification_** 自动联想，会展示各种常用的 NSNotification 的代码块，比如发送通知、添加观察者、移除观察者、观察者方法的实现等等，光标移动选中后敲回车自动补全
+
+- Protocol。敲 **Protocol_** 自动联想，会展示各种常用的 Protocol 的代码块，光标移动选中后敲回车自动补全
+
+- 内存修饰代码块
+
+- 工程常用 TODO、FIXME、Mark。敲 **Mark_** 自动联想，会展示各种常用的 Mark 的代码块，光标移动选中后敲回车自动补全
+
+- 内存修饰代码块。敲 **Memory_** 自动联想，会展示各种常用的内存修饰的代码块，光标移动选中后敲回车自动补全
+
+- 一些常用的代码块。敲 **Thread_** 等自动联想，选中后敲回车自动补全。
+
+  
+
+### 2.  Code Snippet 同步
+
+你可能是代码块的创建者，也可能是使用方，使用的时候直接先给脚本赋权
+
+```
+chmod +x ./syncSnippets.sh // 为脚本设置可执行权限
+./syncSnippets.sh // 同步git云端代码块和文件模版到本地
+```
+
+如果自己有新的代码块创建，觉得不错，想同步到远端 github repo，则可以使用下面的命令
 
 ```shell
-chmod +x ./syncSnippets.sh // 为脚本设置可执行权限
 chmod +x ./uploadMySnippets.sh // 为脚本设置可执行权限
-./syncSnippets.sh // 同步git云端代码块和文件模版到本地
 ./uploadMySnippets.sh //将本地的代码块和文件模版同步到云端
 ```
 
 
+![](https://raw.githubusercontent.com/FantasticLBP/knowledge-kit/master/assets/2021-1008-CodeSnippetMethodGroup.png)
 
+![](https://raw.githubusercontent.com/FantasticLBP/knowledge-kit/master/assets/2021-1008-CodeSnippetProperty.png)
 
-## 反馈
+![](https://raw.githubusercontent.com/FantasticLBP/knowledge-kit/master/assets/2021-1008-CodeSnippetLazyLoad.png)
 
-定期更新博文。如果在查看文章的时候发现了问题可以提出 issue。（95年小双鱼, 技术专家进阶中，有技术问题或者想聊聊程序员的事情可以通过微博联系）[微博](http://weibo.com/u/3194053975)
+## PS
 
+**不断完善中。大家有好用或者不错的代码块或者文件模版希望参与到这个项目中来，为我们开发效率的提升添砖加瓦、贡献力量**
 
+目前新建了大概58个代码段和6个类文件模版（UIViewController控制器带有方法组、模型、线程安全的单例模版、带有布局方法的UIView模版、UITableViewCell、UICollectionViewCell模版）
 
-
-## 交流
-
-如果你也是大前端路上的一名修行者,可以加我 Wechat：704568245，拉你入群一起在「大前端自习室」学习交流。
+shell 脚本基本有每个函数和关键步骤的代码注释，想学习 shell 的人可以看看代码。[代码传送门](https://github.com/FantasticLBP/codesnippets)
